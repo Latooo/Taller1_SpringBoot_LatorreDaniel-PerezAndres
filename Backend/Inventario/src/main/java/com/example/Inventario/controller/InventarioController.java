@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/inventario")
+@CrossOrigin(origins = "http://127.0.0.1:5500") // Permitir solicitudes desde el frontend
 public class InventarioController {
 
     @Autowired
@@ -23,7 +24,7 @@ public class InventarioController {
             return ResponseEntity.ok(inventarios);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body(null); // Internal Server Error
+            return ResponseEntity.status(500).body(null);
         }
     }
 
@@ -37,10 +38,10 @@ public class InventarioController {
     public ResponseEntity<Inventario> crear(@RequestBody Inventario inventario) {
         try {
             Inventario nuevoInventario = inventarioService.guardar(inventario);
-            return ResponseEntity.status(201).body(nuevoInventario); // Created
+            return ResponseEntity.status(201).body(nuevoInventario);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body(null); // Internal Server Error
+            return ResponseEntity.status(500).body(null);
         }
     }
 
@@ -63,10 +64,10 @@ public class InventarioController {
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         try {
             inventarioService.eliminar(id);
-            return ResponseEntity.noContent().build(); // No Content
+            return ResponseEntity.noContent().build();
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).build(); // Internal Server Error
+            return ResponseEntity.status(500).build();
         }
     }
 }
