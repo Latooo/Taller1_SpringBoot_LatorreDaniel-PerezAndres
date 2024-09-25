@@ -17,8 +17,14 @@ public class InventarioController {
     private InventarioService inventarioService;
 
     @GetMapping
-    public List<Inventario> obtenerTodos() {
-        return inventarioService.obtenerTodos();
+    public ResponseEntity<List<Inventario>> obtenerTodos() {
+        try {
+            List<Inventario> inventarios = inventarioService.obtenerTodos();
+            return ResponseEntity.ok(inventarios);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(null); // Internal Server Error
+        }
     }
 
     @GetMapping("/{id}")
@@ -28,8 +34,14 @@ public class InventarioController {
     }
 
     @PostMapping
-    public Inventario crear(@RequestBody Inventario inventario) {
-        return inventarioService.guardar(inventario);
+    public ResponseEntity<Inventario> crear(@RequestBody Inventario inventario) {
+        try {
+            Inventario nuevoInventario = inventarioService.guardar(inventario);
+            return ResponseEntity.status(201).body(nuevoInventario); // Created
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(null); // Internal Server Error
+        }
     }
 
     @PutMapping("/{id}")
@@ -49,7 +61,12 @@ public class InventarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        inventarioService.eliminar(id);
-        return ResponseEntity.noContent().build();
+        try {
+            inventarioService.eliminar(id);
+            return ResponseEntity.noContent().build(); // No Content
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).build(); // Internal Server Error
+        }
     }
 }

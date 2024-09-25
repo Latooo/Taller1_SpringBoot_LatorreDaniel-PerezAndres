@@ -1,7 +1,7 @@
 package com.example.Inventario.service;
 
 import com.example.Inventario.model.Inventario;
-import com.example.Inventario.repository.InventarioRepository; // Verifica que esta línea está presente
+import com.example.Inventario.repository.InventarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
