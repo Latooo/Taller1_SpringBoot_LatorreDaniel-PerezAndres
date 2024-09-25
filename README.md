@@ -23,8 +23,11 @@ La **Inventario API** es una API RESTful diseñada para gestionar el inventario 
 Daniel Latorre Ruiz // Backend
 
 Andres David Perez Santiago // frontend
-## Estructura de la Tabla `inventario`
 
+## Swagger
+https://app.swaggerhub.com/apis-docs/DANIELLATORRE600/Inventario/1.0.0
+
+## Estructura de la Tabla `inventario`
 La tabla de inventario está definida como sigue:
 
 ```sql
