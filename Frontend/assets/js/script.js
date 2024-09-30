@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8080/api/inventario'; 
+const apiUrl = 'http://172.16.101.150:8080/Inventario/api/inventario';
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('inventarioForm');
